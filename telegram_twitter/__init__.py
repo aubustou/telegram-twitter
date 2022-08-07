@@ -25,6 +25,8 @@ TWITTER_API_SECRET_KEY = os.getenv("TWITTER_API_SECRET_KEY", "")
 
 twitter: Client | None = None
 
+ALLOWED_URLS = {"https://github.com", "https://www.github.com"}
+
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await context.bot.send_message(
@@ -37,6 +39,9 @@ async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await context.bot.send_message(chat_id=update.effective_chat.id, text=text)
     if not twitter:
         raise RuntimeError("No twitter account set")
+
+    if not any(text.startswith(x) for x in ALLOWED_URLS):
+        logging.warning("Not tweeting %s", text)
 
     try:
         twitter.create_tweet(text=text)
