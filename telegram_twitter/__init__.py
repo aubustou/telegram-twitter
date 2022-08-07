@@ -25,7 +25,12 @@ TWITTER_API_SECRET_KEY = os.getenv("TWITTER_API_SECRET_KEY", "")
 
 twitter: Client | None = None
 
-ALLOWED_URLS = {"https://github.com", "https://www.github.com"}
+ALLOWED_URLS = {
+    "https://gitlab.com/",
+    "https://www.gitlab.com/",
+    "https://github.com/",
+    "https://www.github.com/",
+}
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
