@@ -47,6 +47,7 @@ async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if not any(text.startswith(x) for x in ALLOWED_URLS):
         logging.warning("Not tweeting %s", text)
+        return
 
     try:
         twitter.create_tweet(text=text)
