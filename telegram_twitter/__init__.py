@@ -53,6 +53,8 @@ async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE):
         twitter.create_tweet(text=text)
     except Forbidden as exc:
         logging.warning("Cannot create tweet: %s. Reason: %s", text, exc)
+    else:
+        logging.info("Tweeted %s", text)
 
 
 def main() -> None:
