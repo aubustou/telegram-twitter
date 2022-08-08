@@ -18,7 +18,7 @@ setup(
         ]
     },
     install_requires=[
-        "python-telegram-bot",
-        "tweepy"
+        "python-telegram-bot>=20.0a2",
+        "tweepy>=4.10.0"
     ],
 )
